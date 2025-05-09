@@ -2,36 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nuhu Enoch | Data Analyst</title>
 
-  <!-- Bootstrap CSS -->
+  <!-- Bootstrap & Animate.css -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
 
   <style>
+    :root {
+      --accent-color: #00e7a6;
+      --bg-dark: #001b17;
+      --text-light: #f8f9fa;
+    }
+
     body {
-      background-color: #002b23;
-      color: #fff;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
       font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
     }
 
-    nav {
-      background-color: transparent;
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.85);
     }
 
-    .navbar-nav .nav-link {
-      color: #fff !important;
-      margin-right: 15px;
+    .navbar-brand {
+      color: var(--accent-color) !important;
+      font-weight: bold;
     }
 
-    .navbar .btn-outline-light {
-      border: 1px solid #fff;
-      color: #fff;
+    .nav-link {
+      color: var(--text-light) !important;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-color) !important;
+    }
+
+    .btn-outline-light {
+      border-color: var(--text-light);
+      color: var(--text-light);
+    }
+
+    .btn-outline-light:hover {
+      background-color: var(--accent-color);
+      color: #000;
+      border-color: var(--accent-color);
     }
 
     .hero-section {
-      background-color: #000;
       padding: 100px 0;
+      background: linear-gradient(135deg, #000, #001b17);
       text-align: left;
       min-height: 100vh;
       display: flex;
@@ -42,78 +66,109 @@
       font-size: 3rem;
       font-weight: bold;
       color: #fff;
+      animation: fadeInDown 1s ease;
     }
 
     .hero-section p {
       color: #ccc;
       font-size: 1.1rem;
       max-width: 500px;
+      animation: fadeInUp 1.2s ease;
     }
 
     .hero-section .btn-primary {
-      background-color: #00e7a6;
+      background-color: var(--accent-color);
       border: none;
       padding: 10px 20px;
       font-weight: bold;
-      border-radius: 20px;
+      border-radius: 25px;
     }
 
     .hero-image {
       max-width: 100%;
-      animation: glow 2s infinite ease-in-out alternate;
+      animation: pulse 3s infinite;
     }
 
-    @keyframes glow {
-      0% {
-        filter: drop-shadow(0 0 10px #00e7a6);
-      }
-      100% {
-        filter: drop-shadow(0 0 25px #00e7a6);
-      }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
     }
 
-    .logo {
-      color: #00e7a6;
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
       font-weight: bold;
-      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--accent-color);
+      text-align: center;
+    }
+
+    .project-card, .modal-content {
+      background-color: #1f1f1f;
+      border: 1px solid var(--accent-color);
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: scale(1.02);
+    }
+
+    #skills i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      padding: 30px 0;
+      background-color: #000;
+      color: #ccc;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
     <div class="container">
-      <a class="navbar-brand logo" href="#">Nuhu</a>
-      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="#">Nuhu Enoch</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
-      <a href="#projects" class="btn btn-outline-light">View Projects</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
+  <div class="hero-section" id="home">
     <div class="container">
       <div class="row align-items-center">
-        <!-- Text Content -->
         <div class="col-md-6">
-          <h1>Hi, I'm Nuhu<br>A Data Analyst</h1>
-          <p>
+          <h1 class="animate__animated animate__fadeInDown">Hi, I'm Nuhu Enoch<br>A Data Analyst</h1>
+          <p class="animate__animated animate__fadeInUp">
             I turn raw data into meaningful insights that drive decisions. 
             From dashboards to predictive models, I help businesses understand their data.
           </p>
           <a href="#projects" class="btn btn-primary mt-3">View My Work</a>
         </div>
+        <div class="col-md-6 text-center">
+          <img src="images/profile-glow.png" alt="Data Analyst" class="hero-image animate__animated animate__zoomIn">
+        </div>
+      </div>
+    </div>
+  </div>
+
 
         <!-- Image -->
         <div class="col-md-6 text-center">
@@ -122,6 +177,369 @@
       </div>
     </div>
   </section>
+
+  <!-- Custom Style -->
+  <style>
+    body {
+      background-color: #001b17;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    section#about {
+      background-color: #000;
+      padding: 80px 0;
+    }
+
+    #about h1 {
+      color: #00ffcc;
+      font-size: 3rem;
+    }
+
+    #about p {
+      color: #ccc;
+      font-size: 1rem;
+    }
+
+    #about a.btn {
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      transition: 0.3s;
+    }
+
+    #about a.btn:hover {
+      background-color: #00ffcc;
+      color: #000;
+    }
+
+    #about img {
+      max-height: 400px;
+      filter: drop-shadow(0 0 20px #00ffcc);
+      transition: transform 0.3s ease;
+    }
+
+    #about img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+
+  <!-- About Me Section -->
+  <section id="about" class="min-vh-100 d-flex align-items-center text-white">
+    <div class="container">
+      <div class="row align-items-center">
+        
+        <!-- Left Content -->
+        <div class="col-md-6 mb-5 mb-md-0">
+          <h1 class="fw-bold">Data-Driven<br>Problem Solver</h1>
+          <p class="mt-4">
+            I’m <strong>Nuhu Enoch</strong>, a data analyst passionate about transforming raw numbers into meaningful stories. With skills in Excel, SQL, Python, and visualization tools like Tableau and Power BI, I uncover insights that drive smarter decisions.
+          </p>
+          <p>
+            I specialize in making complex data simple, clear, and actionable—helping teams and businesses grow through analytics.
+          </p>
+          <a href="#contact" class="btn px-4 py-2 mt-3">Let's Connect</a>
+        </div>
+        
+        <!-- Right Image -->
+        <div class="col-md-6 text-center">
+          <img src="images/about-analyst.png" alt="Data Analyst" class="img-fluid">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <style>
+    body {
+      background-color: #121212;
+      color: #f8f9fa;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .navbar {
+      background-color: #1f1f1f;
+    }
+    .navbar-brand {
+      color: #0dcaf0 !important;
+      font-weight: bold;
+    }
+    .nav-link {
+      color: #f8f9fa !important;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      color: #0dcaf0;
+    }
+    .project-card {
+      background-color: #1f1f1f;
+      border: 1px solid #0dcaf0;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover {
+      transform: scale(1.02);
+    }
+    .modal-content {
+      background-color: #1f1f1f;
+    }
+    #projects {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">Nuhu Enoch</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer to offset fixed navbar -->
+<div style="height: 70px;"></div>
+
+<!-- Projects Section -->
+<section id="projects" class="py-5">
+  <div class="container">
+    <h2 class="text-center section-title">Projects</h2>
+    <div class="row g-4">
+
+      <!-- Project Card 1 -->
+      <div class="col-md-4">
+        <div class="card project-card h-100 text-light">
+          <img src="images/project1.jpg" class="card-img-top" alt="Project 1">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Sales Dashboard</h5>
+            <p class="card-text">Interactive Power BI dashboard visualizing key sales KPIs and filters by region.</p>
+            <a href="#" class="btn btn-outline-success mt-auto" data-bs-toggle="modal" data-bs-target="#projectModal1">View Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card 2 -->
+      <div class="col-md-4">
+        <div class="card project-card h-100 text-light">
+          <img src="images/project2.jpg" class="card-img-top" alt="Project 2">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Customer Churn Model</h5>
+            <p class="card-text">Python model predicting telecom churn using ML and SHAP interpretability tools.</p>
+            <a href="#" class="btn btn-outline-success mt-auto" data-bs-toggle="modal" data-bs-target="#projectModal2">View Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card 3 -->
+      <div class="col-md-4">
+        <div class="card project-card h-100 text-light">
+          <img src="images/project3.jpg" class="card-img-top" alt="Project 3">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Survey Analysis</h5>
+            <p class="card-text">Tableau dashboard analyzing user feedback to drive product and UX improvements.</p>
+            <a href="#" class="btn btn-outline-success mt-auto" data-bs-toggle="modal" data-bs-target="#projectModal3">View Project</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Modals -->
+
+<!-- Modal 1 -->
+<div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModal1Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content text-light border-success">
+      <div class="modal-header">
+        <h5 class="modal-title" id="projectModal1Label">Sales Dashboard</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <img src="images/project1.jpg" class="img-fluid mb-3 rounded border border-success" alt="Sales Dashboard">
+        <p>Power BI dashboard with filters, slicers, and regional insights. Designed for sales executives to monitor key performance indicators and uncover regional trends.</p>
+        <p><strong>Tools:</strong> Power BI, Excel</p>
+        <a href="#" class="btn btn-outline-success" target="_blank">View on GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 2 -->
+<div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="projectModal2Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content text-light border-success">
+      <div class="modal-header">
+        <h5 class="modal-title" id="projectModal2Label">Customer Churn Model</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <img src="images/project2.jpg" class="img-fluid mb-3 rounded border border-success" alt="Churn Model">
+        <p>Developed a churn prediction model with Random Forest in Python. Features included contract type, tenure, and monthly charges. Explained results with SHAP values for business insight.</p>
+        <p><strong>Tools:</strong> Python, Pandas, scikit-learn</p>
+        <a href="#" class="btn btn-outline-success" target="_blank">View on GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 3 -->
+<div class="modal fade" id="projectModal3" tabindex="-1" aria-labelledby="projectModal3Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content text-light border-success">
+      <div class="modal-header">
+        <h5 class="modal-title" id="projectModal3Label">Survey Analysis</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <img src="images/project3.jpg" class="img-fluid mb-3 rounded border border-success" alt="Survey Analysis">
+        <p>Analyzed survey data from 1,200+ customers using Tableau and Excel. Created interactive dashboards to identify satisfaction drivers and recommend changes to improve retention.</p>
+        <p><strong>Tools:</strong> Excel, Tableau</p>
+        <a href="#" class="btn btn-outline-success" target="_blank">View Live Dashboard</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Include AOS CSS & JS in your HTML head or before closing body tag -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<!-- Modern Full-Page Skills Section -->
+<section id="skills" class="py-5 bg-dark text-light min-vh-100 d-flex align-items-center">
+  <div class="container">
+    <h2 class="text-center section-title mb-5 display-4 fw-bold" data-aos="fade-down" data-aos-duration="1000">
+      🛠️ My Core Skills
+    </h2>
+    <div class="row g-4">
+
+      <!-- Skill Card: Excel -->
+      <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+        <div class="card bg-secondary text-light h-100 shadow-lg border-0 rounded-4 p-4 text-center">
+          <i class="bi bi-file-earmark-excel-fill display-3 text-success mb-3"></i>
+          <h5 class="fw-bold">Excel & Spreadsheets</h5>
+          <p class="small">Expert in Excel formulas, pivot tables, dashboards, and data cleaning techniques.</p>
+          <div class="progress" style="height: 10px;">
+            <div class="progress-bar bg-success" style="width: 90%;"></div>
+          </div>
+          <p class="mt-2 mb-0 small text-muted">Proficiency: 90%</p>
+        </div>
+      </div>
+
+      <!-- Skill Card: SQL -->
+      <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+        <div class="card bg-secondary text-light h-100 shadow-lg border-0 rounded-4 p-4 text-center">
+          <i class="bi bi-database-fill display-3 text-info mb-3"></i>
+          <h5 class="fw-bold">SQL</h5>
+          <p class="small">Skilled in writing complex queries, data manipulation, joins, and optimization.</p>
+          <div class="progress" style="height: 10px;">
+            <div class="progress-bar bg-info" style="width: 85%;"></div>
+          </div>
+          <p class="mt-2 mb-0 small text-muted">Proficiency: 85%</p>
+        </div>
+      </div>
+
+      <!-- Skill Card: Data Visualization -->
+      <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+        <div class="card bg-secondary text-light h-100 shadow-lg border-0 rounded-4 p-4 text-center">
+          <i class="bi bi-bar-chart-fill display-3 text-warning mb-3"></i>
+          <h5 class="fw-bold">Data Visualization</h5>
+          <p class="small">Experienced with Power BI, Tableau, and matplotlib to create insightful visuals.</p>
+          <div class="progress" style="height: 10px;">
+            <div class="progress-bar bg-warning text-dark" style="width: 88%;"></div>
+          </div>
+          <p class="mt-2 mb-0 small text-muted">Proficiency: 88%</p>
+        </div>
+      </div>
+
+      <!-- Skill Card: Data Storytelling -->
+      <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+        <div class="card bg-secondary text-light h-100 shadow-lg border-0 rounded-4 p-4 text-center">
+          <i class="bi bi-chat-left-quote-fill display-3 text-primary mb-3"></i>
+          <h5 class="fw-bold">Data Storytelling</h5>
+          <p class="small">Able to translate complex data into clear narratives that drive decision-making.</p>
+          <div class="progress" style="height: 10px;">
+            <div class="progress-bar bg-primary" style="width: 82%;"></div>
+          </div>
+          <p class="mt-2 mb-0 small text-muted">Proficiency: 82%</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- Contact Section -->
+<section id="contact" class="py-5 text-white bg-black">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">📬 Contact Me</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control bg-dark text-white border-success" id="name" placeholder="Your name">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control bg-dark text-white border-success" id="email" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control bg-dark text-white border-success" id="message" rows="4" placeholder="Your message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success px-4">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="py-4 bg-dark text-center text-white animate__animated animate__fadeInUp">
+    <div class="container">
+      <p class="mb-1">© <span id="year"></span> Nuhu Enoch — All Rights Reserved</p>
+      <p class="mb-0">Let's connect: 
+        <a href="mailto:nuhuenoch@example.com" class="text-success text-decoration-none ms-2">nuhuenoch@example.com</a>
+      </p>
+    </div>
+  </footer>
+  
+  <!-- Animate.css and Smooth Scroll -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
+      });
+    });
+  
+    // Current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  
+  
+
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
